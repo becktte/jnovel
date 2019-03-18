@@ -17,7 +17,6 @@ import java.util.Map;
  */
 public class JsonUtils {
     private static final SerializeConfig config;
-
     static {
         config = new SerializeConfig();
         config.put(java.util.Date.class, new JSONLibDataFormatSerializer()); // 使用和json-lib兼容的日期输出格式
