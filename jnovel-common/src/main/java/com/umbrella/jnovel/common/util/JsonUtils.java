@@ -19,15 +19,23 @@ public class JsonUtils {
     private static final SerializeConfig config;
     static {
         config = new SerializeConfig();
-        config.put(java.util.Date.class, new JSONLibDataFormatSerializer()); // 使用和json-lib兼容的日期输出格式
-        config.put(java.sql.Date.class, new JSONLibDataFormatSerializer()); // 使用和json-lib兼容的日期输出格式
+        // 使用和json-lib兼容的日期输出格式
+        config.put(java.util.Date.class, new JSONLibDataFormatSerializer());
+        // 使用和json-lib兼容的日期输出格式
+        config.put(java.sql.Date.class, new JSONLibDataFormatSerializer());
     }
 
-    private static final SerializerFeature[] features = {SerializerFeature.WriteMapNullValue, // 输出空置字段
-            SerializerFeature.WriteNullListAsEmpty, // list字段如果为null，输出为[]，而不是null
-            SerializerFeature.WriteNullNumberAsZero, // 数值字段如果为null，输出为0，而不是null
-            SerializerFeature.WriteNullBooleanAsFalse, // Boolean字段如果为null，输出为false，而不是null
-            SerializerFeature.WriteNullStringAsEmpty // 字符类型字段如果为null，输出为""，而不是null
+    private static final SerializerFeature[] features = {
+            // 输出空置字段
+            SerializerFeature.WriteMapNullValue,
+            // list字段如果为null，输出为[]，而不是null
+            SerializerFeature.WriteNullListAsEmpty,
+            // 数值字段如果为null，输出为0，而不是null
+            SerializerFeature.WriteNullNumberAsZero,
+            // Boolean字段如果为null，输出为false，而不是null
+            SerializerFeature.WriteNullBooleanAsFalse,
+            // 字符类型字段如果为null，输出为""，而不是null
+            SerializerFeature.WriteNullStringAsEmpty
     };
 
 
@@ -151,10 +159,6 @@ public class JsonUtils {
     public static List<Map<String, Object>> getListMap(String jsonString) {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         try {
-            // 两种写法
-            // list = JSON.parseObject(jsonString, new
-            // TypeReference<List<Map<String, Object>>>(){}.getType());
-
             list = JSON.parseObject(jsonString, new TypeReference<List<Map<String, Object>>>() {
             });
         } catch (Exception e) {
