@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.umbrella.jnovel.system.novel.mapper.NovelMapper">
+    <select id="queryNovelList" resultType="com.umbrella.jnovel.system.novel.model.Novel">
+        select id, ctime, rtime, isvalid, name, author,status, category_id as categoryId,source
+        from t_novel
+    </select>
+
+</mapper>
