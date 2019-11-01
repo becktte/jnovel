@@ -7,6 +7,10 @@ import com.alibaba.fastjson.serializer.JSONLibDataFormatSerializer;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +20,28 @@ import java.util.Map;
  * @author 叶永建
  */
 public class JsonUtils {
+    public static void main(String[] args) throws IOException {
+        File file = new File("D:\\temp\\lts");
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        FileOutputStream fileOutputStream = new FileOutputStream("D:\\temp\\lts\\c.txt");
+        fileOutputStream.write("abd".getBytes());
+    }
+    public static void delFile(File file) {
+        if (!file.exists()) {
+            return;
+        }
+
+        if (file.isFile()) {
+            file.delete();
+        } else {
+            File[] files = file.listFiles();
+            for (File f : files) {
+                delFile(f);
+            }
+        }
+    }
     private static final SerializeConfig config;
     static {
         config = new SerializeConfig();

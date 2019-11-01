@@ -15,7 +15,7 @@ public class ConsistentHashingWithVirtualNode {
     /**
      * 需要加入到hash环的服务器列表
      */
-    private static String server[] = {"192.168.0.1:1010", "192.168.0.2:1010", "192.168.0.3:1010", "192.168.0.4:1010"};
+    private static String[] server = {"192.168.0.1:1010", "192.168.0.2:1010", "192.168.0.3:1010", "192.168.0.4:1010"};
     /**
      * 真实节点
      */

@@ -82,6 +82,19 @@ public class ConsistentHashing {
             System.out.println("[" + keys[i] + "]加入到[" + getServer(keys[i]) +
                     "]服务器中，其hash值为" + getHash(keys[i]));
         }
+
+
+        for (int i = 0; i <= 100; i++) {
+            String sql = "outtable" + i + " = (\n" +
+                    "\tCASE\n" +
+                    "\tWHEN FIND_IN_SET('" + i + "', userange) THEN\n" +
+                    "\t\t1\n" +
+                    "\tELSE\n" +
+                    "\t\t0\n" +
+                    "\tEND\n" +
+                    "),";
+            System.out.println(sql);
+        }
     }
 
 }
